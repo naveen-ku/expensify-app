@@ -1,35 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
-import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
-import EditExpensePage from '../components/EditExpensePage'
-import HelpPage from '../components/HelpPage'
-import AddExpensePage from '../components/AddExpensePage'
-
-
-
-const NotFoundPage = () => (
-  <div>
-    404 - <Link to="/">Go home</Link>
-  </div>
-);
-
-const Header = () => (
-  <header>
-    <h1>Expensify</h1>
-    <NavLink to="/" activeClassName="is-active" exact={true}>
-      Dashboard
-    </NavLink>
-    <NavLink to="/create" activeClassName="is-active">
-      Create Expense
-    </NavLink>
-    <NavLink to="/edit" activeClassName="is-active">
-      Edit Expense
-    </NavLink>
-    <NavLink to="/help" activeClassName="is-active">
-      Help
-    </NavLink>
-  </header>
-);
+import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
+import EditExpensePage from "../components/EditExpensePage";
+import HelpPage from "../components/HelpPage";
+import AddExpensePage from "../components/AddExpensePage";
+import NotFoundPage from "../components/NotFoundPage";
+import Header from "../components/Header";
 
 const AppRouter = () => (
   <BrowserRouter>
