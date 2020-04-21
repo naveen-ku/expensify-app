@@ -27,7 +27,10 @@ const setCount = ({ count } = {}) => {
     count: count,
   };
 };
-const store = createStore((state = { count: 0 }, action) => {
+
+//Reducers
+// 1. Reducers are pure functions.
+const countReducer = (state = { count: 0 }, action) => {
   // console.log("running store");
 
   switch (action.type) {
@@ -52,7 +55,8 @@ const store = createStore((state = { count: 0 }, action) => {
     default:
       return state;
   }
-});
+};
+const store = createStore(countReducer);
 
 store.subscribe(() => {
   console.log(store.getState());
