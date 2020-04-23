@@ -1,7 +1,25 @@
 // console.log("EXPENSIFY REDUX")
 import { createStore, combineReducers } from "redux";
+import { v1 as uuidv1 } from "uuid";
 
 //ADD_EXPENSES
+const addExpense = ({
+  description = "",
+  note = "",
+  amount = 0,
+  createdAt = 0,
+} = {}) => {
+  return {
+    type: "ADD_EXPENSE",
+    expense: {
+      id: uuidv1(),
+      description: description,
+      note: note,
+      amount: amount,
+      createdAt: createdAt,
+    },
+  };
+};
 //REMOVE_EXPENSES
 //EDIT_EXPENSES
 //SET_TEXT_FILTER
@@ -15,6 +33,8 @@ const expenseReducerDefaultState = [];
 
 const expenseReducer = (state = expenseReducerDefaultState, action) => {
   switch (action.type) {
+    case "ADD_EXPENSE":
+      return state.concat(action.expense)
     default:
       return state;
   }
@@ -34,13 +54,19 @@ const filterReducer = (state = filterReducerDefaultState, action) => {
   }
 };
 
+//Store Creation
 const store = createStore(
   combineReducers({
     expenses: expenseReducer,
     filers: filterReducer,
   })
 );
-console.log(store.getState());
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch(addExpense({ description: "Redux" }));
 
 const demoState = {
   expenses: [

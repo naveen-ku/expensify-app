@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 console.log("Playground Redux");
 
+//Function for store.Dispatch => Action Generator
 const incrementCount = ({ incrementBy = 1 } = {}) => {
   return {
     type: "INCREMENT",
@@ -8,6 +9,7 @@ const incrementCount = ({ incrementBy = 1 } = {}) => {
   };
 };
 
+//Function for store.Dispatch => Action Generator
 const decrementCount = ({ decrementBy = 1 } = {}) => {
   return {
     type: "DECREMENT",
@@ -15,12 +17,14 @@ const decrementCount = ({ decrementBy = 1 } = {}) => {
   };
 };
 
+//Function for store.Dispatch => Action Generator
 const resetCount = () => {
   return {
     type: "RESET",
   };
 };
 
+//Function for store.Dispatch => Action Generator
 const setCount = ({ count } = {}) => {
   return {
     type: "SET",
