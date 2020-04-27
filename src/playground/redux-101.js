@@ -7,7 +7,7 @@ const incrementCount = ({ incrementBy = 1 } = {}) => {
     type: "INCREMENT",
     incrementBy: incrementBy,
   };
-};
+};  
 
 //Function for store.Dispatch => Action Generator
 const decrementCount = ({ decrementBy = 1 } = {}) => {
