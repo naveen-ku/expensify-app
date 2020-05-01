@@ -21,8 +21,8 @@ console.log(store.getState());
 store.dispatch(setTextFilter("water"));
 console.log(store.getState());
 
-setInterval(() => {
-  store.dispatch(setTextFilter("gas"));
+setTimeout(() => {
+  store.dispatch(setTextFilter("bill"));
 }, 3000);
 //getVisibleExpenses
 const state = store.getState();
