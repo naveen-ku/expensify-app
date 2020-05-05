@@ -10,13 +10,14 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: "",
-      note: "",
-      amount: "",
-      createdAt: moment(),
+      description: props.expense ? props.expense.description : "",
+      note: props.expense ? props.expense.note : "",
+      amount: props.expense ? props.expense.amount.toString() : "",
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calenderFocused: false,
       error: "",
     };
+    console.log(props);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onNoteChange = this.onNoteChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
