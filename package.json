@@ -31,11 +31,14 @@
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.11.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
   "scripts": {
     "serve": "live-server public/",
     "build": "webpack",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "test":"jest --watch"
   },
   "author": "",
   "license": "ISC"

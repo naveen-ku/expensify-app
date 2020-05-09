@@ -12,15 +12,15 @@ import getVisibleExpenses from "./selectors/expenses";
 const store = configureStore();
 
 //addExpense ->Water bill
-store.dispatch(addExpense({ description: "Water Bill", amount: 1500 ,createdAt:2000}));
+store.dispatch(addExpense({ description: "Water Bill", amount: 1500 ,createdAt:1589024204966}));
 // console.log(store.getState());
 
 //addExpense ->Gas bill
-store.dispatch(addExpense({ description: "Gas Bill", createdAt: 1000 }));
+store.dispatch(addExpense({ description: "Gas Bill", createdAt: 1589024204953 }));
 // console.log(store.getState());
 
 //addExpense ->Rent bill
-store.dispatch(addExpense({ description: "Rent Bill", amount: 5000 }));
+store.dispatch(addExpense({ description: "Rent Bill", amount: 23, createdAt:1589024204434 }));
 // console.log(store.getState());
 
 //setTextFilter
