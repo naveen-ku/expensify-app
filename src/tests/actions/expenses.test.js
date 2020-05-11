@@ -1,7 +1,5 @@
 import { addExpense, editExpense, removeExpense } from "../../actions/expenses";
-// var removeExpense = require("../../actions/expenses");
-// var addExpense = require("../../actions/expenses");
-// var editExpense = require("../../actions/expenses");
+
 
 
 test("should return remove expense action object", () => {
