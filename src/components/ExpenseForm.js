@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
-import "../../node_modules/react-dates/lib/css/_datepicker.css";
+
 
 const now = moment();
 setTimeout(console.log(now.format("MMM do YYYY")), 2000);
