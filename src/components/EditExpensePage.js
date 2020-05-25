@@ -3,31 +3,32 @@ import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import { editExpense, removeExpense } from "../actions/expenses";
 
-const EditExpensePage = (props) => {
-  // console.log(props);
-  return (
-    <div>
-      <ExpenseForm
-        expense={props.expense}
-        onSubmit={(expense) => {
-          //Dispatch the action to edit the expense
-          //Redirect to dashpord
-          props.dispatch(editExpense(props.expense.id, expense));
-          props.history.push("/");
-          console.log("Updated", expense);
-        }}
-      />
-      <button
-        onClick={() => {
-          props.dispatch(removeExpense({ id: props.expense.id }));
-          props.history.push("/");
-        }}
-      >
-        Remove
-      </button>
-    </div>
-  );
-};
+export class EditExpensePage extends React.Component {
+  constructor(props) {
+    super();
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+  onSubmit(expense) {
+    //Dispatch the action to edit the expense
+    //Redirect to dashpord
+    this.props.editExpense(this.props.expense.id, expense);
+    this.props.history.push("/");
+    console.log("Updated", expense);
+  }
+  onClick() {
+    this.props.removeExpense({ id: this.props.expense.id });
+    this.props.history.push("/");
+  }
+  render() {
+    return (
+      <div>
+        <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
+        <button onClick={this.onClick}>Remove</button>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state, props) => {
   return {
@@ -37,4 +38,11 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(EditExpensePage);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    editDispatch: (id, expense) => dispatch(editExpense(id, expense)),
+    removeExpense: (data) => dispatch(removeExpense(data)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
