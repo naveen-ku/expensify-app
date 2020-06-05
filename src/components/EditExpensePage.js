@@ -14,7 +14,7 @@ export class EditExpensePage extends React.Component {
     //Redirect to dashpord
     this.props.editExpense(this.props.expense.id, expense);
     this.props.history.push("/");
-    // console.log("Updated", expense);
+    console.log("Updated", expense);
   }
   onClick() {
     this.props.removeExpense({ id: this.props.expense.id });
