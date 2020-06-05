@@ -4,7 +4,7 @@ import { SingleDatePicker } from "react-dates";
 
 
 const now = moment();
-setTimeout(console.log(now.format("MMM do YYYY")), 2000);
+// setTimeout(console.log(now.format("MMM do YYYY")), 2000);
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class ExpenseForm extends React.Component {
       calenderFocused: false,
       error: "",
     };
-    console.log(props);
+    // console.log(props);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onNoteChange = this.onNoteChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);

@@ -41,10 +41,10 @@ test("should setup add expense action object with provided values", () => {
 test("should add expense to database and store", (done) => {
   const store = createMockStore({});
   const expenseData = {
-    description: "Wallet",
+    description: "Test Case Data",
     amount: 500,
-    note: "Buy this one",
-    createdAt: 9900,
+    note: "This entry is added from jest test case.",
+    createdAt: 1000,
   };
   store
     .dispatch(startAddExpense(expenseData))
@@ -60,18 +60,22 @@ test("should add expense to database and store", (done) => {
       return database.ref(`expenses/${actions[0].expense.id}`).once("value");
     })
     .then((snapshot) => {
-      expect(snapshot.val()).toEqual(expenseData);
+      try {
+        expect(snapshot.val()).toEqual(expenseData);
+        done();
+      } catch (error) {
+        done(error);
+      }
     });
-  done();
 });
 
 test("should add expense with defaults to database and store", (done) => {
   const store = createMockStore({});
   const expenseDefaultData = {
-    description: "Wallet",
-    amount: 500,
-    note: "Buy this one",
-    createdAt: 9900,
+    description: "",
+    amount: 0,
+    note: "Default values in test case",
+    createdAt: 0,
   };
   store
     .dispatch(startAddExpense(expenseDefaultData))
@@ -87,7 +91,10 @@ test("should add expense with defaults to database and store", (done) => {
       return database.ref(`expenses/${actions[0].expense.id}`).once("value");
     })
     .then((snapshot) => {
-      expect(snapshot.val()).toEqual(expenseDefaultData);
+      try {
+        expect(snapshot.val()).toEqual(expenseDefaultData);
+      } catch (error) {
+        done(error);
+      }
     });
-  done();
 });

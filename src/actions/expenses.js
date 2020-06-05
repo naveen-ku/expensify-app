@@ -27,7 +27,7 @@ export const startAddExpense = (expenseData = {}) => {
             ...expense,
           })
         );
-      }).catch(err => console.log("err",err))
+      })
   };
 };
 
