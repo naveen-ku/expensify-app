@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "12.14.0"
-  },
   "dependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.25.0",
