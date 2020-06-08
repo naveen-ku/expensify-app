@@ -1,12 +1,5 @@
-const getExpenseTotal = (expenses) => {
-  const amountArr = expenses.map((expense) => expense.amount);
-  if (amountArr.length === 0) {
-    return 0;
-  } else {
-    return amountArr.reduce(
-      (accumulator, currentValue) => +accumulator + +currentValue
-    );
-  }
+export default (expenses) => {
+  return expenses
+      .map((expense) => expense.amount)
+      .reduce((sum, value) => sum + value, 0);
 };
-
-export default getExpenseTotal;
