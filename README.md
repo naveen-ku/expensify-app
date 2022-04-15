@@ -20,8 +20,9 @@
         - copy paste the code snipped given below.
 
 #### Starting the project on localhost
-    1. For running app: `npm run dev-server`
-    2. For running test suite: `npm test -- --watch`
+    1. Build the app: `npm run build:dev`
+    2. For running app: `npm run dev-server`
+    3. For running test suite: `npm test -- --watch`
 
 
 

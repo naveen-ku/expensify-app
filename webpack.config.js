@@ -26,8 +26,8 @@ module.exports = (env) => {
       filename: "bundle.js",
       publicPath:"/dist"
     },
-    // mode: isProduction?"production":"development" ,
-    mode:"production",
+    mode: isProduction?"production":"development" ,
+    // mode:"production",
 
     //Setup loaders
     module: {
