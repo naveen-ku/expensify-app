@@ -1,49 +1,74 @@
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const MiniExtractTextPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = (env) => {
+
   const isProduction = env === "production";
-  const CSSExtract = new ExtractTextPlugin("styles.css");
+  const devtool = isProduction ? "source-map" : "inline-source-map";
+  const devServer = {
+    host: '0.0.0.0',
+    port: 8080,
+    historyApiFallback: true,
+    open: true,
+    hot: true,
+  };
+  const plugins = [new MiniExtractTextPlugin({ filename: "styles.css" })]
+  
   return {
+    // This property defines where the application starts
     entry: "./src/app.js",
+
+    // This property defines the file path and the file name which will be used for deploying the bundled file
     output: {
-      path: path.join(__dirname, "/public", "/dist"),
+      path: path.join(__dirname, "public/dist"),
       filename: "bundle.js",
+      publicPath:"/dist"
     },
+    mode: isProduction?"production":"development" ,
+    // mode:"production",
+
+    //Setup loaders
     module: {
       rules: [
+        // Babel Loader
         {
-          loader: "babel-loader",
           test: /\.js$/,
           exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+          }
         },
+        // CSS & SCSS Loader
         {
           test: /\.s?css$/,
-          use: CSSExtract.extract({
-            use: [
+          use: [
               {
-                loader: "css-loader",
+              loader:MiniExtractTextPlugin.loader,
                 options: {
-                  sourceMap: true,
+                  publicPath: path.join(__dirname, "public/dist")
                 },
-              },
-              {
-                loader: "sass-loader",
-                options: {
-                  sourceMap: true,
-                },
-              },
+            },
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true
+              }
+            }
+
             ],
-          }),
         },
       ],
     },
-    plugins: [CSSExtract],
-    devtool: isProduction ? "source-map" : "inline-source-map",
-    devServer: {
-      contentBase: path.join(__dirname, "/public"),
-      historyApiFallback: true,
-      publicPath: "/dist/",
-    },
+    plugins,
+    devtool,
+    devServer
   };
 };

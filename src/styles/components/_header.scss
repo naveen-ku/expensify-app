@@ -1,0 +1,27 @@
+.header {
+  background: $lavender;
+}
+
+.header__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size 0;
+}
+
+.header__title {
+  // width: 50%;
+  text-align: center;
+  font-family: fantasy;
+  color: $black;
+  text-decoration:solid;
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.header__title_link{
+  color: $black;
+  text-decoration:solid;
+}

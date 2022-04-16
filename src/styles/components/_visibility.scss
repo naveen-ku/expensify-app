@@ -1,0 +1,5 @@
+.show-only-on-mobile {
+  @media (min-width: $desktop-breakpoint) {
+    display: none;
+  }
+}
