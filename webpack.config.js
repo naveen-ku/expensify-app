@@ -8,7 +8,7 @@ module.exports = (env) => {
   const isProduction = env === "production";
   const devtool = isProduction ? "source-map" : "inline-source-map";
   const devServer = {
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 8080,
     historyApiFallback: true,
     open: true,
